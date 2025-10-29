@@ -1,12 +1,15 @@
 {
   "name": "newbackend",
   "version": "1.0.0",
-  "description": "",
+  "description": "Detailed backend learning",
   "license": "ISC",
+  "type": "module",
   "author": "niil",
-  "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
   }
 }
