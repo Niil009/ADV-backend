@@ -65,7 +65,7 @@ userSchema.pre("save", async function (next) {
 // 🧠 Instance method to compare entered password with stored hashed password
 //
 userSchema.methods.isPasswordCorrect = async function (password) {
-  return await compare(password, this.password);
+  return await bcrypt.compare(password, this.password);
 };
 
 //
@@ -74,7 +74,7 @@ userSchema.methods.isPasswordCorrect = async function (password) {
 // - Used for authorizing protected routes
 //
 
-userSchema.methods.generateAcessToken = function () {
+userSchema.methods.generateAccessToken = function () {
   return jwt.sign(
     {
       _id: this._id, //will get this from mongoDb
