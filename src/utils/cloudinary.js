@@ -14,11 +14,13 @@ const uploadOncloudinary = async (localFilePath) => {
     const response = await cloudinary.uploader.upload(localFilePath, {
       resource_type: "auto",
     });
-    fs.unlinkSync(localFilePath);
+
+    if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath);
     // console.log("FIle has been sucessfully uploaded", response.url);
     return response;
   } catch (error) {
-    fs.unlinkSync(localFilePath);
+    if (fs.existsSync(localFilePath)) fs.unlinkSync(localFilePath);
+
     // If file upload fails will clean up the local file path
     return null;
   }
